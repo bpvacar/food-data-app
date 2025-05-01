@@ -1,0 +1,198 @@
+/* ==============================
+   Variables de color
+   ============================== */
+:root {
+  --color-principal: #2c7a4b;    /* Verde bosque */
+  --color-secundario: #f4a261;  /* Ocre cálido */
+  --color-fondo: #fafafa;       /* Gris muy claro */
+  --color-texto: #333333;       /* Gris oscuro */
+  --color-acento: #e76f51;      /* Terracota suave */
+  --radio-bordes: 12px;
+  --sombra-suave: rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================
+   Reset y tipografía
+   ============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* ==============================
+   Encabezados
+   ============================== */
+h1, h2, h3 {
+  color: var(--color-principal);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+h1 { font-size: 2.5rem; margin-top: 2rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; margin-top: 2.5rem; }
+
+/* ==============================
+   Contenedor principal
+   ============================== */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ==============================
+   Tarjetas (meals / inventario)
+   ============================== */
+.card {
+  background-color: #fff;
+  border-radius: var(--radio-bordes);
+  box-shadow: 0 4px 12px var(--sombra-suave);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--sombra-suave);
+}
+.card-header {
+  background-color: var(--color-principal);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+}
+.card-body {
+  padding: 1.5rem;
+}
+
+/* ==============================
+   Formulario
+   ============================== */
+form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: var(--radio-bordes);
+  box-shadow: 0 4px 12px var(--sombra-suave);
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+input, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--radio-bordes);
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--color-principal);
+  background-color: #fff;
+}
+
+/* ==============================
+   Botones
+   ============================== */
+button {
+  display: inline-block;
+  background-color: var(--color-secundario);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radio-bordes);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+button:hover {
+  background-color: #e59447;
+  transform: translateY(-1px);
+}
+button:active {
+  background-color: #cc7f3b;
+  transform: translateY(1px);
+}
+
+/* ==============================
+   Tabla de inventario
+   ============================== */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  margin-top: 1.5rem;
+}
+th, td {
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  text-align: left;
+  border-radius: var(--radio-bordes);
+}
+th {
+  background-color: var(--color-principal);
+  color: #fff;
+  font-weight: 600;
+}
+tr td:nth-child(1),
+tr td:nth-child(10) {
+  text-align: center;
+}
+tr:nth-child(even) td {
+  background-color: #f1f1f1;
+}
+
+/* Resaltado de alertas */
+.table-warning {
+  background-color: #fff3cd !important;
+}
+.table-danger {
+  background-color: #f8d7da !important;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  form, .card-body {
+    padding: 1rem;
+  }
+  table, th, td {
+    font-size: 0.9rem;
+    display: block;
+  }
+  table tr {
+    margin-bottom: 1rem;
+  }
+  th { display: none; }
+  td {
+    position: relative;
+    padding-left: 50%;
+  }
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    font-weight: 600;
+    color: var(--color-principal);
+  }
+}
